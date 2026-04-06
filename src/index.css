@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Rowdies:wght@300;400;700&family=DynaPuff:wght@400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-red: #e8223a;
+  --brand-pink: #f8a6c0;
+  --brand-teal: #5bbcb0;
+  --section-teal: #74acb0;
+  --brand-lavender: #c8c5e8;
+  --brand-blush: #f6e2ec;
+  --brand-yellow: #f5c842;
+  --brand-brown: #3b1f0a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Fredoka One", cursive;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff5f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-pink);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}
+
+/* Dot pattern utility */
+.dot-pattern {
+  background-image: radial-gradient(circle, #e0dfe6 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Wave divider */
+.wave-divider {
+  position: relative;
+}
+
+.wave-divider::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z' fill='%23ffffff'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: cover;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.wave-divider-teal::after {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z' fill='%23FFF5F8'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: cover;
+}
+
+.wave-divider-blush::after {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z' fill='%23C8C5E8'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: cover;
+}
+
+.wave-divider-lavender::after {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z' fill='%23ffffff'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: cover;
+}
+
+.wave-divider-white::after {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z' fill='%23FFF0F5'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: cover;
+}
+
+.wave-divider-testimonial::after {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z' fill='%23F8A6C0'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: cover;
+}
