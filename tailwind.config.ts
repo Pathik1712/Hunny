@@ -20,7 +20,12 @@ const config: Config = {
           yellow: "#F5C842",
           brown: "#3B1F0A",
         },
-        "section-teal": "#74ACB0",
+        section: {
+          teal: "#74ACB0",
+          pink: "#F6E0EB",
+          purple: "#BFBEE3",
+          gray: "#F2F7FB",
+        },
         "button-pink": "#F8AFC9",
       },
       borderRadius: {

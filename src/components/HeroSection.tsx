@@ -6,57 +6,24 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen bg-section-teal overflow-hidden wave-divider wave-divider-teal pt-20"
     >
-      {/* Floating decorative candies */}
-      <motion.span
-        className="absolute top-28 left-8 text-4xl md:text-5xl opacity-60 pointer-events-none"
-        animate={{ y: [0, -18, 0], rotate: [0, 15, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      >
-        🍪
-      </motion.span>
-      <motion.span
-        className="absolute top-40 right-12 text-3xl opacity-50 pointer-events-none"
-        animate={{ y: [0, -12, 0], rotate: [0, -10, 0] }}
-        transition={{
-          duration: 3.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-      >
-        🍬
-      </motion.span>
-      <motion.span
-        className="absolute bottom-40 left-16 text-3xl opacity-40 pointer-events-none hidden md:block"
-        animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      >
-        🍫
-      </motion.span>
-      <motion.span
-        className="absolute top-60 left-1/3 text-2xl opacity-30 pointer-events-none hidden lg:block"
-        animate={{ y: [0, -10, 0] }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1.5,
-        }}
-      >
-        ⭐
-      </motion.span>
-
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full py-16 md:py-24">
           {/* Left Column - Text */}
           <div className="text-center lg:text-left">
+            <motion.div
+              className=" pointer-events-none  block max-w-md lg:max-w-none mx-auto"
+              animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            >
+              <img src="/white_chocolate.svg" alt="Hero Candy 1" className="h-[116px]" />
+            </motion.div>
             <motion.p
-              className="mt-4 md:mt-6 text-white font-rowdies text-[25px] md:text-[30px] xl:text-[40px] "
+              className="text-white font-rowdies text-[25px] md:text-[30px] xl:text-[40px] "
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
@@ -85,7 +52,7 @@ export default function HeroSection() {
                 href="#about"
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3.5 bg-button-pink text-white font-bold font-rowdies rounded-full text-[20px] hover:shadow-xl hover:shadow-button-pink/40 transition-shadow duration-300"
+                className="px-8 py-2 bg-button-pink text-white font-bold font-rowdies rounded-full text-[16px] sm:text-[18px] md:text-[20px] hover:shadow-xl hover:shadow-button-pink/40 transition-shadow duration-300"
               >
                 Read More
               </motion.a>
@@ -94,7 +61,7 @@ export default function HeroSection() {
 
           {/* Right Column - Hero Product */}
           <motion.div
-            className="flex justify-center relative"
+            className="flex justify-center relative row-start-1 lg:col-start-2"
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{

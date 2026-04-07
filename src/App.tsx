@@ -1,19 +1,45 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
-import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import AboutSection from './components/AboutSection'
-import ProductsSection from './components/ProductsSection'
-import WhyChooseSection from './components/WhyChooseSection'
-import BestSellerSection from './components/BestSellerSection'
-import TestimonialSection from './components/TestimonialSection'
-import Footer from './components/Footer'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import ProductsSection from "./components/ProductsSection";
+import WhyChooseSection from "./components/WhyChooseSection";
+import BestSellerSection from "./components/BestSellerSection";
+import TestimonialSection from "./components/TestimonialSection";
+import Footer from "./components/Footer";
 
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(onComplete, 1800)
-    return () => clearTimeout(timer)
-  }, [onComplete])
+    let done = false;
+
+    const call = () => {
+      if (!done) {
+        done = true;
+        onComplete();
+      }
+    };
+
+    const timer = setTimeout(call, 4000);
+
+    let loaded = 0;
+    const srcs = ["/logo.svg", "/whyChoose.svg", "/waffer_roll.svg"];
+
+    srcs.forEach((src) => {
+      const img = new Image();
+      img.onload = () => {
+        loaded++;
+        if (loaded === srcs.length) call();
+      };
+      img.onerror = () => {
+        loaded++;
+        if (loaded === srcs.length) call();
+      };
+      img.src = src;
+    });
+
+    return () => clearTimeout(timer);
+  }, [onComplete]);
 
   return (
     <motion.div
@@ -25,7 +51,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         className="text-center"
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+        transition={{ type: "spring", stiffness: 200, damping: 15 }}
       >
         <motion.span
           className="block text-6xl mb-4"
@@ -58,46 +84,46 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 function CandyCursor() {
-  const [pos, setPos] = useState({ x: 0, y: 0 })
-  const [visible, setVisible] = useState(false)
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const isTouchDevice = 'ontouchstart' in window
-    if (isTouchDevice) return
+    const isTouchDevice = "ontouchstart" in window;
+    if (isTouchDevice) return;
 
     const handleMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY })
-      setVisible(true)
-    }
-    const handleLeave = () => setVisible(false)
+      setPos({ x: e.clientX, y: e.clientY });
+      setVisible(true);
+    };
+    const handleLeave = () => setVisible(false);
 
-    window.addEventListener('mousemove', handleMove)
-    document.addEventListener('mouseleave', handleLeave)
+    window.addEventListener("mousemove", handleMove);
+    document.addEventListener("mouseleave", handleLeave);
     return () => {
-      window.removeEventListener('mousemove', handleMove)
-      document.removeEventListener('mouseleave', handleLeave)
-    }
-  }, [])
+      window.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("mouseleave", handleLeave);
+    };
+  }, []);
 
-  if (!visible) return null
+  if (!visible) return null;
 
   return (
     <motion.div
       className="fixed pointer-events-none z-[99] text-lg"
       animate={{ x: pos.x + 12, y: pos.y + 12 }}
-      transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 0.5 }}
+      transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
     >
       🍬
     </motion.div>
-  )
+  );
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   return (
     <>
@@ -109,7 +135,7 @@ export default function App() {
         <>
           <CandyCursor />
           <Navbar />
-          <main>
+          <main className="w-screen overflow-x-hidden">
             <HeroSection />
             <AboutSection />
             <ProductsSection />
@@ -121,5 +147,5 @@ export default function App() {
         </>
       )}
     </>
-  )
+  );
 }
