@@ -56,11 +56,15 @@ export default function Navbar() {
           : "bg-section-teal shadow-sm"
       }`}
     >
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 xl:px-8">
         <div className="flex items-center justify-around ">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <img src="/logo.svg" alt="Logo" className="py-1 h-[116px]" />
+            <img
+              src="/logo.svg"
+              alt="Logo"
+              className="py-1 h-[80px] sm:h-[90px] md:h-[90px] lg:h-[80px] xl:h-[116px]"
+            />
           </a>
 
           {/* Desktop Nav Links */}
@@ -75,7 +79,7 @@ export default function Navbar() {
                 animate="visible"
                 className={cn(
                   "relative px-4 py-2 transition-colors duration-200 rounded-full",
-                  "font-rowdies font-normal text-[20px] leading-none tracking-normal text-center",
+                  "font-rowdies font-normal text-[16px] lg:text-[16x] xl:text-[20px] leading-none tracking-normal text-center",
                   activeSection === link.href
                     ? "text-[#8B6C7A]"
                     : "text-white hover:text-[#8B6C7A]",
@@ -98,33 +102,35 @@ export default function Navbar() {
             href="#"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="hidden lg:flex items-center min-h-[43px] gap-2 px-5 py-2.5 bg-button-pink text-white rounded-full text-[20px] font-bold font-rowdies  transition-colors duration-300"
+            className="hidden lg:flex items-center min-h-[43px] gap-2 px-5 py-2.5 bg-button-pink text-white rounded-full text-[20px] lg:text-[14px] xl:text-[20px] font-bold font-rowdies  transition-colors duration-300"
           >
             Download Catalogue{" "}
-            <img src="/download.svg" alt="Download" className="w-8 h-8" />
+            <img
+              src="/download.svg"
+              alt="Download"
+              className="xl:w-8 xl:h-8 lg:w-6 lg:h-6"
+            />
           </motion.a>
 
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex flex-col gap-1.5 p-2"
+            className="lg:hidden flex items-center justify-center size-6 relative"
             aria-label="Toggle menu"
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-              className="block w-6 h-0.5 bg-brand-brown rounded-full"
+              animate={mobileOpen ? { rotate: 45 } : { rotate: 0, y: -7 }}
+              className="absolute w-6 h-0.5 bg-brand-brown rounded-full"
             />
+
             <motion.span
-              animate={
-                mobileOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }
-              }
-              className="block w-6 h-0.5 bg-brand-brown rounded-full"
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="absolute w-6 h-0.5 bg-brand-brown rounded-full"
             />
+
             <motion.span
-              animate={
-                mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
-              }
-              className="block w-6 h-0.5 bg-brand-brown rounded-full"
+              animate={mobileOpen ? { rotate: -45 } : { rotate: 0, y: 7 }}
+              className="absolute w-6 h-0.5 bg-brand-brown rounded-full"
             />
           </button>
         </div>
@@ -148,7 +154,15 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileOpen(false);
+                    setTimeout(() => {
+                      const id = link.href.replace("#", "");
+                      const el = document.getElementById(id);
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }, 300);
+                  }}
                   className={cn(
                     "block px-4 py-3 rounded-full transition-colors duration-200",
                     "font-rowdies font-normal text-[20px] leading-none tracking-normal text-center",
@@ -165,7 +179,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center justify-center text-center mt-3 h-[43px] gap-4 px-5 py-2.5 bg-button-pink text-white rounded-full text-base font-bold font-rowdies transition-colors duration-300"
+                className="flex items-center justify-center text-center mt-3 h-[43px] gap-4 px-5 py-2.5 bg-button-pink text-white rounded-full text-base font-bold font-rowdies transition-colors duration-300 max-w-[300px] mx-auto"
               >
                 Download Catalogue{" "}
                 <img src="/download.svg" alt="Download" className="w-6 h-6" />
