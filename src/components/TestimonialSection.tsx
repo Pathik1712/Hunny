@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "motion/react"
 
 export default function TestimonialSection() {
   return (
@@ -34,12 +34,21 @@ export default function TestimonialSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Salmon Pink Accent Block */}
-          {/* Overlapping bottom right */}
-          <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 w-2/3 md:w-1/2 h-40 bg-[#F2A2A7] rounded-3xl" />
+          <div className="absolute  right-0 top-full h-14  w-2/3 md:w-1/2  bg-[#FE99B3] rounded-br-[30px]">
+            <img
+              src="/testimonial-avatar.svg"
+              alt="Profile Avatar"
+              className="absolute h-[120px] aspect-square object-cover -left-10 -top-10 z-50"
+              onError={(e) => {
+                /* Fallback to simple placeholder if img missing */
+                e.currentTarget.style.display = "none"
+              }}
+            />
+            <span className="inline-block h-[107px] bg-[#FE99B3] z-40  absolute aspect-square rounded-full -left-[41px] -top-8"></span>
+          </div>
 
           {/* Teal Card */}
-          <div className="relative bg-[#30B0C7] rounded-tl-[50px] h-[218px]   text-center shadow-xl">
+          <div className="relative bg-[#30B0C7] rounded-tl-[50px] pb-10   text-center ">
             {/* Top Left Quote */}
 
             <div className="flex h-min *:h-[70px]">
@@ -53,35 +62,16 @@ export default function TestimonialSection() {
               </span>
             </div>
 
-            <p className="relative z-10 font-body text-white text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-3xl mx-auto mb-10 px-2 md:px-16 flex-1">
+            <p className="relative z-10 font-rowdies font-light text-white text-base md:text-lg lg:text-xl max-w-3xl mx-auto px-2 md:px-16 flex-1">
               We were pleasantly surprised by how light and flavorful these
               treats are. The crunch is just right, and the sweetness is never
               overwhelming. Everything from taste to quality feels thoughtfully
               made. It has quickly become a regular snack in our home. Highly
               recommended.
             </p>
-
-            {/* Profile Avatar Centered on Bottom Edge */}
-            <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border-4 md:border-8 border-white overflow-hidden bg-[#F5E6E8] shadow-2xl z-20 flex justify-center items-center">
-              <img
-                src="/testimonials_img%201.svg"
-                alt="Profile Avatar"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  /* Fallback to simple placeholder if img missing */
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-              <span
-                className="absolute inset-0 flex items-center justify-center font-display text-gray-500 font-bold text-2xl"
-                style={{ zIndex: -1 }}
-              >
-                A
-              </span>
-            </div>
           </div>
         </motion.div>
       </div>
     </section>
-  );
+  )
 }
