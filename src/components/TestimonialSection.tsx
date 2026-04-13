@@ -1,18 +1,34 @@
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 export default function TestimonialSection() {
   return (
     <section className="relative py-32 bg-[#F5E6E8] overflow-hidden flex flex-col items-center">
       {/* Decorative donut image */}
-      <motion.img
-        src="/decorative-donut.svg"
-        alt="Decorative Item"
-        className="absolute -top-10 -left-10 md:top-10 md:left-10 w-48 h-48 md:w-64 md:h-64 object-contain opacity-80"
+      <motion.div
+        className="absolute -top-5 left-0 md:-top-2 md:left-10 w-48 h-48 xl:w-64 xl:h-64 "
         initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
         whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, type: "spring" }}
-      />
+      >
+        <motion.img
+          animate={{
+            y: [0, 20, -10, 15, 0],
+            rotate: [0, 8, -6, 4, 0],
+            scale: [1, 1.02, 0.98, 1.01, 1],
+          }}
+          transition={{
+            duration: 6,
+            ease: "easeInOut",
+            repeat: Infinity,
+            times: [0, 0.25, 0.5, 0.75, 1],
+          }}
+          style={{ willChange: "transform" }}
+          src="/decorative-donut.svg"
+          alt="Decorative Item"
+          className="w-full h-full object-contain opacity-30 lg:opacity-100"
+        />
+      </motion.div>
 
       <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Heading */}
@@ -36,33 +52,34 @@ export default function TestimonialSection() {
         >
           <div className="absolute  right-0 top-full h-14  w-2/3 md:w-1/2  bg-[#FE99B3] rounded-br-[30px]">
             <img
-              src="/testimonial-avatar.svg"
+              src="/testimonial-avatar.png"
               alt="Profile Avatar"
-              className="absolute h-[120px] aspect-square object-cover -left-10 -top-10 z-50"
+              className="absolute h-[90px] aspect-square object-cover z-50 rounded-full ring-4 ring-[#FE99B3] -translate-x-1/2 -translate-y-5"
               onError={(e) => {
-                /* Fallback to simple placeholder if img missing */
-                e.currentTarget.style.display = "none"
+                e.currentTarget.style.display = "none";
               }}
             />
-            <span className="inline-block h-[107px] bg-[#FE99B3] z-40  absolute aspect-square rounded-full -left-[41px] -top-8"></span>
           </div>
 
           {/* Teal Card */}
           <div className="relative bg-[#30B0C7] rounded-tl-[50px] pb-10   text-center ">
             {/* Top Left Quote */}
-
-            <div className="flex h-min *:h-[70px]">
-              <span className="text-[#F2A2A7] text-7xl md:text-9xl font-serif leading-none select-none">
-                &ldquo;
-              </span>
+            <div className="h-[40px] relative max-w-3xl mx-auto mb-8 ">
+              <img
+                src="/quote-left.svg"
+                alt=""
+                className="absolute  h-16 top-0 right-4 -translate-y-6 object-contain"
+              />
 
               {/* Bottom Right Quote */}
-              <span className="text-[#F2A2A7] text-7xl md:text-9xl font-serif leading-none select-none">
-                &rdquo;
-              </span>
+              <img
+                src="/quote-right.svg"
+                alt=""
+                className="absolute h-7 left-10 top-4 object-contain"
+              />
             </div>
 
-            <p className="relative z-10 font-rowdies font-light text-white text-base md:text-lg lg:text-xl max-w-3xl mx-auto px-2 md:px-16 flex-1">
+            <p className="relative z-10 font-rowdies font-light text-white text-base md:text-lg lg:text-xl max-w-3xl mx-auto px-2 md:px-8 flex-1">
               We were pleasantly surprised by how light and flavorful these
               treats are. The crunch is just right, and the sweetness is never
               overwhelming. Everything from taste to quality feels thoughtfully
@@ -73,5 +90,5 @@ export default function TestimonialSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

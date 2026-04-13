@@ -53,15 +53,16 @@ export default function ProductsSection() {
           {products.map((product, index) => (
             <motion.div
               key={product.name}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              initial={{ opacity: 0, y: 100, scale: 0.6 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{
-                delay: index * 0.07,
-                type: "spring",
-                stiffness: 120,
+                duration: 0.4,
+                delay: index * 0.2,
+                type: "tween",
+                ease: "easeOut",
               }}
               whileHover={{ y: -6 }}
-              viewport={{ once: true, amount: 0.1 }}
               className="cursor-pointer group w-fit "
             >
               <div
